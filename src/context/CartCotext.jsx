@@ -7,31 +7,61 @@ export const CartProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [count, setCount] = useState(1);
-  
-  let foundProduct;
-  let index;
 
   const addToCart = (product, count) => {
-    
-  };
-  
-  const onRemove = (product) => {
-    
+    let updatedCart = [...cartItems];
+    let existingItem = updatedCart.find(item => item.id === product.id);
+
+    if (existingItem) {
+      existingItem.quantity += count;
+    } else {
+      updatedCart.push({ ...product, quantity: count });
+    }
+
+    updateCartState(updatedCart);
   };
 
-  const toggleCartItemQuanitity = (id, value) => {
-    
-    
+  const onRemove = (productId) => {
+    let updatedCart = cartItems.filter(item => item.id !== productId);
+    updateCartState(updatedCart);
+  };
+
+  const toggleCartItemQuantity = (productId, value) => {
+    let updatedCart = [...cartItems];
+    let existingItem = updatedCart.find(item => item.id === productId);
+
+    if (existingItem) {
+      existingItem.quantity = value;
+    }
+
+    updateCartState(updatedCart);
   };
 
   const incCount = () => {
-
+    setCount(prevCount => prevCount + 1);
   };
 
   const decCount = () => {
-
+    setCount(prevCount => (prevCount > 1 ? prevCount - 1 : prevCount));
   };
 
+  const updateCartState = (updatedCart) => {
+    setCartItems(updatedCart);
+    updateTotals(updatedCart);
+  };
+
+  const updateTotals = (updatedCart) => {
+    let total = 0;
+    let count = 0;
+
+    updatedCart.forEach(item => {
+      total += item.price * item.quantity;
+      count += item.quantity;
+    });
+
+    setTotalPrice(total);
+    setTotalCount(count);
+  };
 
   return (
     <CartContext.Provider
@@ -42,7 +72,7 @@ export const CartProvider = ({ children }) => {
         totalPrice,
         addToCart,
         onRemove,
-        toggleCartItemQuanitity,
+        toggleCartItemQuantity,
         incCount,
         decCount
       }}

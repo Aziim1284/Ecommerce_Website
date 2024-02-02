@@ -11,3 +11,32 @@
   align-items: center;
   margin-bottom: 1000px;
 }
+@keyframes flip {
+  0% {
+    transform: perspective(400px) rotateY(0);
+  }
+  100% {
+    transform: perspective(400px) rotateY(180deg);
+  }
+}
+
+.flip-container {
+  perspective: 800px;
+}
+
+.flip-container:hover .flipper {
+  animation: flip 1s;
+  transform-style: preserve-3d;
+}
+
+.flipper {
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+.front ,.back{
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

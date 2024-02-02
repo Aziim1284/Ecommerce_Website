@@ -3,15 +3,18 @@ import { useCart } from '../context/CartCotext'
 import { motion, AnimatePresence } from 'framer-motion'
 
 function CartList() {
-    const {cartItems, totalPrice, onRemove, toggleCartItemQuanitity} = useCart();
+    const {cartItems, totalPrice, onRemove, toggleCartItemQuantity} = useCart();
     const [delAnimVal,setDelAnimVal] = useState()
 
     const handlerDecBtn = (id) => {
-        toggleCartItemQuanitity(id, "dec");
+        console.log("decid" ,id)
+        toggleCartItemQuantity(id, "dec");
     }
 
     const handlerIncBtn = (id) => {
-        toggleCartItemQuanitity(id, "inc");
+        console.log("inc" ,id)
+
+        toggleCartItemQuantity(id, "inc");
     }
 
     const handlerDeleteBox = (item ,key) => {

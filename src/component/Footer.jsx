@@ -24,7 +24,7 @@ const Footer = () => {
     <footer id='footer'>
         <div className='footerUnderLine' />
         <div className='boxRow space_between footerLink'>
-            <img src={logo} alt='audiophile' />
+           <h1 className='front'>AudioSphere</h1>
             <ul className='boxRow gap_3'>
                 <NavLinks />
             </ul>
@@ -33,10 +33,9 @@ const Footer = () => {
         <div className='gap_3 footerSocals'>
             <div className='w_50 gap_3 boxColumn left'>
                 <p className='header_body opacity_50'>
-                    Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.
-                </p>
+                AudioSphere - where your audio needs find a home. Our small team of music aficionados and sound specialists is dedicated to maximizing your personal audio enjoyment. Experience it for yourself at our demo facility, open 7 days a week                </p>
                 <p className='text_body_white opacity_50 w_100'>
-                    Copyright 2021. All Rights Reserved
+                    Copyright 2024. All Rights Reserved
                 </p>
             </div>
             <div className='box_row gap_1 right w_50'>
